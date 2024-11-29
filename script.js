@@ -44,3 +44,13 @@ const plus = document.getElementById('plus');
 const amt = document.getElementById('amount');
 
 
+//---------------------------hover-----------------show cart 
+
+const hover = ()=>{
+    document.getElementById('cart-container').style.display = 'block'
+}
+const unhover = ()=>{
+    document.getElementById('cart-container').style.display = 'none'
+}
+
+

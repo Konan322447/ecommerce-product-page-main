@@ -87,6 +87,26 @@ nav{
     fill: hsl(220, 13%, 13%);
     cursor: pointer;
 }
+.cart{
+    position: relative;
+}
+.cart::before{
+    content: '0';
+    width: 90%;
+    height: 70%;
+    background: hsl(26, 100%, 55%);
+    position: absolute;
+    top: -30%;
+    right: -40%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    font-weight: 700;
+    color: hsl(223, 64%, 98%);
+    border-radius: 40%;
+    display: none;
+}
 .avatar{
     width: 45px;
     margin-left: 30px;
@@ -255,4 +275,89 @@ nav{
 .add-to-cart p{
     color: hsl(220, 13%, 13%);
     font-weight: 700;
+}
+
+/* ----------------------cart- body----------------------------------- */
+.cart-container{
+    position: absolute;
+    width: 25%;
+    height: 34%;
+    background: hsl(0, 0%, 100%);
+    border-radius: 10px;
+    box-shadow: 0px 2px 4px 3px rgba(0, 0, 0, 0.6);
+    right: 10%;
+    top: 12%;
+    display: none;
+}
+.cart-head{
+    padding: 3% 3% 5% 8%;
+    border-bottom: 1px solid hsl(219, 9%, 45%);
+}
+.cart-head h2{
+    font-size: 25px;
+}
+.cart-body{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 70%;
+    width: 100%;
+}
+.empty-text{
+    font-size: 20px;
+    font-weight: 600;
+    color: hsl(219, 9%, 45%);
+    display: block;
+}
+.cart-item{
+    display: none;
+    flex-direction: column;
+    padding: 8% 7%;
+    gap: 15%;
+}
+.item-main{
+    display: flex;
+    align-items: center;
+    width: 1005;
+    justify-content: space-between;
+}
+.cart-img img{
+    width: 65px;
+    border-radius: 10px;
+}
+.item-desc{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+}
+.desc{
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    margin-right: 1rem;
+    margin-left: 1rem;
+}
+.desc p{
+    font-weight: 600;
+    color: hsl(219, 9%, 45%);
+    font-size: 18px;
+}
+.cart-price{
+    display: flex;
+    gap: 4%;
+}
+.cart-price h3{
+    font-size: 18px;
+    color: hsl(220, 13%, 13%);
+    font-weight: 700;
+}
+.checkout-btn button{
+    width: 100%;
+    padding: 5%;
+    background: hsl(26, 100%, 55%);
+    color: hsl(220, 13%, 13%);
+    border: none;
+    font-weight: 700;
+    border-radius: 10px;
 }
