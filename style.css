@@ -13,6 +13,7 @@
 .container{
     margin: 0;
     padding: 1% 13%;
+    overflow-x: hidden;
 }
 nav{
     display: flex;
@@ -312,7 +313,7 @@ nav{
     display: none;
     flex-direction: column;
     padding: 8% 7%;
-    gap: 15%;
+    gap: 1.3rem;
 }
 .item-main{
     display: flex;
@@ -359,9 +360,125 @@ nav{
     border: none;
     font-weight: 700;
     border-radius: 10px;
-    margin-top: 0.5rem;
     transition: background 0.2s;
 }
 .checkout-btn button:hover{
     background: hsl(25, 82%, 85%);
+}
+/* ----------------------lightbox-design------------------------- */
+
+.lightbox-container{
+    display: none;
+    height: 100dvh;
+    width: 100dvw;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: hsla(0, 0%, 0%, 0.75);
+    justify-content: center;
+    align-items: center;
+    padding: 15%;
+}
+.lightbox-main{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex-basis: 40%;
+    gap: 1.5rem;
+    position: relative;
+}
+.biglightboximg img{
+    width: 100%;
+    height: 100%;
+    border-radius: 15px;
+}
+.smalllightboximg{
+    display: flex;
+    justify-content: center;
+    gap: 6%;
+}
+.smalllightboximg div{
+    flex-basis: 15%;
+    position: relative;
+}
+.smalllightboximg div::before{
+    content: '';
+    width: 100%;
+    height: 100%;
+    background: #ffffff75;
+    position: absolute;
+    border-radius: 8.5px;
+    display: none;
+    transition: all 0.2s;
+}
+.smalllightboximg div:hover::before{
+    display: block;
+    cursor: pointer;
+}
+.smalllightboximg div img{
+    width: 100%;
+    height: 100%;
+    border-radius: 8.5px;
+}
+.activethumb{
+    position: relative;
+}
+.activethumb::after{
+    content: '';
+    position: absolute;
+    background: #ffffff75;
+    width: 95%;
+    height: 95%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    border-radius: 10px;
+    border: 3px solid hsl(26, 100%, 55%);
+}
+.activethumb img{
+    width: 100%;
+    height: 100%;
+}
+#close-lightbox{
+    position: absolute;
+    right: 0;
+    top: -7%;
+}
+#close-lightbox svg path{
+    fill: hsl(0, 0%, 100%);
+    transition: fill 0.1s;
+}
+#close-lightbox svg path:hover{
+    fill: hsl(26, 100%, 55%);
+}
+#previous{
+    display: flex;
+    width: 60px;
+    height: 60px;
+    background: hsl(0, 0%, 100%);
+    position: absolute;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    top: 36%;
+    left: -7%;
+}
+#previous:hover svg path{
+    stroke: hsl(26, 100%, 55%);
+}
+#next{
+    display: flex;
+    width: 60px;
+    height: 60px;
+    background: hsl(0, 0%, 100%);
+    position: absolute;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    top: 36%;
+    right: -7%;
+    transition: stroke 0.2s;
+}
+#next:hover svg path{
+    stroke: hsl(26, 100%, 55%);
 }

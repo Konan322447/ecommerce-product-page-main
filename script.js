@@ -169,9 +169,72 @@ cartContainer.addEventListener('mouseleave', () => {
 
 const clearCart = document.getElementById('clear-cart')
 
-clearCart.addEventListener('click', ()=>{
+clearCart.addEventListener('click', () => {
     cartItem.style.display = 'none';
     emptyText.style.display = 'block';
     itemNumber.style.display = 'none';
     amt.textContent = 0
 });
+
+// ----------------------------light-box-------------------------
+
+const lightBoxMain = document.getElementById('bigImg2');
+const lightboxContainer = document.getElementById('lightbox')
+const lightBoxThumb = document.querySelectorAll('.thumbnail2'); // Assuming you use a class for all thumbnails
+
+lightBoxThumb.forEach((thumb, index) => {
+    thumb.addEventListener('click', () => {
+        lightBoxThumb.forEach(t => t.classList.remove('activethumb')); // Remove active class from all
+        thumb.classList.add('activethumb'); // Add active class to the clicked one
+        lightBoxMain.setAttribute('src', `images/image-product-${index + 1}.jpg`); // Dynamically set the image
+    });
+});
+
+
+const closeLightBox = document.getElementById('close-lightbox');
+const nextImg = document.getElementById('next');
+const prevImg = document.getElementById('previous');
+const mainLightBoxImg = document.getElementById('bigImg2'); // Assuming this is the main image element
+
+
+// open and close lightbox  
+
+mainImg.addEventListener('dblclick', ()=>{
+    lightboxContainer.style.display = 'flex';
+    document.body.style.overflow = 'hidden';
+});
+
+closeLightBox.addEventListener('click', ()=>{
+    lightboxContainer.style.display = 'none';
+    document.body.style.overflow = 'auto'
+})
+
+
+let currentIndex = 1; // Track the current image index
+const totalImages = lightBoxThumb.length; // Total number of thumbnails
+
+// Function to update the main image and active thumbnail
+const updateImageAndThumbnail = (index) => {
+    mainLightBoxImg.setAttribute('src', `images/image-product-${index}.jpg`);
+
+    // Remove the `activethumb` class from all thumbnails
+    lightBoxThumb.forEach((thumb) => thumb.classList.remove('activethumb'));
+
+    // Add the `activethumb` class to the current thumbnail
+    lightBoxThumb[index - 1].classList.add('activethumb'); // Index adjustment (array is 0-based)
+};
+
+// Next Button Functionality
+nextImg.addEventListener('click', () => {
+    currentIndex = currentIndex < totalImages ? currentIndex + 1 : 1; // Loop back to the first image
+    updateImageAndThumbnail(currentIndex);
+});
+
+// Previous Button Functionality
+prevImg.addEventListener('click', () => {
+    currentIndex = currentIndex > 1 ? currentIndex - 1 : totalImages; // Loop back to the last image
+    updateImageAndThumbnail(currentIndex);
+});
+
+// Initialize the first thumbnail as active
+updateImageAndThumbnail(currentIndex);
