@@ -199,14 +199,18 @@ const mainLightBoxImg = document.getElementById('bigImg2'); // Assuming this is 
 
 // open and close lightbox  
 
-mainImg.addEventListener('dblclick', ()=>{
-    lightboxContainer.style.display = 'flex';
-    document.body.style.overflow = 'hidden';
+mainImg.addEventListener('dblclick', () => {
+    if (window.innerWidth > 767) {
+        lightboxContainer.style.display = 'flex';
+        document.body.style.overflow = 'hidden';
+    }
 });
 
-closeLightBox.addEventListener('click', ()=>{
-    lightboxContainer.style.display = 'none';
-    document.body.style.overflow = 'auto'
+closeLightBox.addEventListener('click', () => {
+    if (window.innerWidth > 767) {
+        lightboxContainer.style.display = 'none';
+        document.body.style.overflow = 'auto'        
+    }
 })
 
 
@@ -238,3 +242,43 @@ prevImg.addEventListener('click', () => {
 
 // Initialize the first thumbnail as active
 updateImageAndThumbnail(currentIndex);
+
+
+// mobile view 
+
+const mobileNext = document.getElementById('mobile-next');
+const mobilePrev = document.getElementById('mobile-prev');
+
+let initialIndex = 1; 
+const totalIndex = 4;  
+
+// Next Button Functionality
+mobileNext.addEventListener('click', () => {
+    initialIndex = initialIndex < totalIndex ? initialIndex + 1 : 1; // Loop back to the first image
+    mainImg.setAttribute('src', `images/image-product-${initialIndex}.jpg`);
+});
+
+// Previous Button Functionality
+mobilePrev.addEventListener('click', () => {
+    initialIndex = initialIndex > 1 ? initialIndex - 1 : totalIndex; // Loop back to the last image
+    mainImg.setAttribute('src', `images/image-product-${initialIndex}.jpg`);
+});
+
+// mobile nav 
+
+const openNav = document.getElementById('openMenu');
+const closeNav = document.getElementById('closeMenu');
+const menuBg = document.getElementById('nav-cover');
+const navMenu = document.getElementById('navMenu');
+
+openNav.addEventListener('click', ()=>{
+    menuBg.style.display = 'block';
+    navMenu.style.left = '0';
+    document.body.style.overflow = 'hidden';
+});
+
+closeMenu.addEventListener('click', ()=>{
+    menuBg.style.display = 'none';
+    navMenu.style.left = '-70dvw';
+    document.body.style.overflow = 'auto';
+})
